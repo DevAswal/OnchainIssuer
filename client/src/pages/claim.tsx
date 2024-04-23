@@ -56,8 +56,13 @@ const App = () => {
         }
 
         const credentialInfo = await requestIssueNewCredential(selectedIssuerContext, credentialRequest)
+        // console.log("credentialInfo.id",credentialInfo.id)
+        // console.log("issuer",selectedIssuerContext)
+        // console.log("subject",routerQuery.userID)
+
         router.push(`/offer?claimId=${credentialInfo.id}&issuer=${selectedIssuerContext}&subject=${routerQuery.userID as string}`);
       } catch (error) {
+
         setError(`Error making the request: ${error}`);
       } finally {
         setIsLoaded(false);
